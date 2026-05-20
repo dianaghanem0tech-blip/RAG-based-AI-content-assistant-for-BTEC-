@@ -7,3 +7,4 @@ fpdf
 python-pptx
 requests
 openai
+protobuf==3.20.3
