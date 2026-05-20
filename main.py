@@ -690,11 +690,12 @@ if st.button("Generate content"):
     
     if not question.strip():
         st.warning("Please enter a question")
+        st.stop()
 
-    else:
-        with st.spinner("🔎 Searching approved BTEC sources..."):
-            time.sleep(0.3)
-            result, ctx = answer(question, task_type)
+    
+    with st.spinner("🔎 Searching approved BTEC sources..."):
+        time.sleep(0.3)
+        result, ctx = answer(question, task_type)
 
     NO_ANSWER = "Cannot answer based on the available approved sources."
 
