@@ -1,0 +1,10 @@
+streamlit
+chromadb
+sentence-transformers
+pypdf
+python-docx
+fpdf
+python-pptx
+requests
+groq
+protobuf==3.20.3
