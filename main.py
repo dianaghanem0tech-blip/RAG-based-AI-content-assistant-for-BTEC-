@@ -36,7 +36,8 @@ from io import BytesIO
 from pypdf import PdfReader
 from docx import Document
 from sentence_transformers import SentenceTransformer
-import ollama
+#import ollama
+from openai import OpenAI
 from fpdf import FPDF
 from pptx import Presentation
 
@@ -549,15 +550,19 @@ Rules:
 """
     }
 
-    res = ollama.chat(
-        model="llama3",
-        messages=[{
+    client_ai = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+    res = client_ai.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {
             "role": "user",
             "content": prompts[task_type]
-        }]
-    )
+        }
+    ]
+)
 
-    final_answer = res["message"]["content"].strip()
+    final_answer = res.choices[0].message.content.strip()
     if "Cannot answer based on the available approved sources" not in final_answer:
         if len(final_answer.split()) > 180:
             final_answer = "Cannot answer based on the available approved sources."
