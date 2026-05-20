@@ -1,0 +1,9 @@
+streamlit
+chromadb
+sentence-transformers
+pypdf
+python-docx
+fpdf
+python-pptx
+requests
+openai
